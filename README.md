@@ -14,7 +14,12 @@
             --envelope-bg: #ffb1c1; 
         }
 
-        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        /* Mencegah scroll dan zoom tidak sengaja di HP */
+        * { 
+            box-sizing: border-box; 
+            -webkit-tap-highlight-color: transparent; 
+            touch-action: manipulation;
+        }
 
         body {
             font-family: 'Courier New', Courier, monospace;
@@ -23,9 +28,9 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
+            height: 100vh;
+            height: -webkit-fill-available; /* Supaya pas di layar HP (Safari/Chrome) */
             overflow: hidden;
-            touch-action: manipulation;
         }
 
         /* --- PAGE 0: WELCOME --- */
@@ -34,8 +39,8 @@
             padding: 30px;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            max-width: 90%;
-            width: 350px;
+            max-width: 85%;
+            width: 320px;
             text-align: center;
         }
 
@@ -79,9 +84,9 @@
             to { opacity: 1; transform: scale(1); }
         }
 
-        /* --- PAGE 1: CLAW MACHINE --- */
+        /* --- PAGE 1: CLAW MACHINE (OPTIMAL HP) --- */
         .machine-frame {
-            width: 280px; height: 350px; background: white;
+            width: 280px; height: 320px; background: white;
             border: 8px solid var(--pink-main); border-radius: 20px 20px 0 0;
             position: relative; overflow: hidden;
         }
@@ -98,31 +103,31 @@
         .arm-left { left: 5px; transform: rotate(25deg); }
         .arm-right { right: 5px; transform: rotate(-25deg); }
 
-        .prize-pool { position: absolute; bottom: 0; width: 100%; height: 100px; }
-        .heart { position: absolute; font-size: 26px; transition: bottom 0.8s ease-in-out, left 0.8s ease-in-out; }
+        .prize-pool { position: absolute; bottom: 0; width: 100%; height: 80px; }
+        .heart { position: absolute; font-size: 26px; transition: bottom 0.8s ease-in-out; }
 
         .panel {
-            width: 280px; background: var(--pink-main); padding: 15px 0;
+            width: 280px; background: var(--pink-main); padding: 20px 0;
             border-radius: 0 0 20px 20px; box-shadow: 0 6px 0 #db5a7a;
-            display: flex; flex-direction: column; align-items: center; gap: 10px;
+            display: flex; flex-direction: column; align-items: center; gap: 15px;
         }
 
-        .joypad { display: flex; gap: 20px; }
-        .btn-circle { width: 60px; height: 60px; border-radius: 50%; border: none; background: white; cursor: pointer; font-size: 24px; box-shadow: 0 4px #ddd; display: flex; align-items: center; justify-content: center; }
+        .joypad { display: flex; gap: 30px; }
+        .btn-circle { width: 65px; height: 65px; border-radius: 50%; border: none; background: white; cursor: pointer; font-size: 28px; box-shadow: 0 4px #ddd; display: flex; align-items: center; justify-content: center; }
         .btn-circle:active { transform: translateY(2px); box-shadow: 0 2px #ddd; }
         
         .btn-action { 
-            width: 160px; height: 50px; border-radius: 25px; border: none; 
+            width: 180px; height: 55px; border-radius: 30px; border: none; 
             background: var(--gold); color: white; font-weight: bold; 
             cursor: pointer; box-shadow: 0 4px #e6a600; font-family: sans-serif;
-            font-size: 1rem;
+            font-size: 1.1rem;
         }
 
         /* --- PAGE 2: ENVELOPE --- */
         .envelope-wrapper {
             position: relative; width: 280px; height: 180px;
             background-color: var(--envelope-bg); margin-top: 50px;
-            border-radius: 5px; cursor: pointer; box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-radius: 5px; cursor: pointer;
         }
 
         .flap {
@@ -150,34 +155,32 @@
         .opened .letter-preview { transform: translateY(-120px); z-index: 5; }
         .opened .heart-seal { opacity: 0; }
 
-        /* --- PAGE 3: SURAT UTAMA --- */
+        /* --- PAGE 3: FINAL --- */
         .final-scroll-page {
-            background: #fff; width: 90%; max-width: 380px;
-            padding: 30px 20px; border-radius: 15px;
+            background: #fff; width: 90%; max-width: 360px;
+            padding: 25px 20px; border-radius: 15px;
             box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-            max-height: 85vh; overflow-y: auto; border: 1px solid #fce4ec;
+            max-height: 85vh; overflow-y: auto;
         }
 
         .long-text { text-align: center; line-height: 1.6; font-size: 14px; color: #5d4037; }
         
-        .btn-claim {
-            display: inline-block; margin-top: 20px; padding: 15px 25px;
-            background-color: #ff4d6d; color: white; text-decoration: none;
-            border-radius: 30px; font-weight: bold; font-family: sans-serif;
-            box-shadow: 0 4px #ad1457;
-        }
-
-        .photo-container { display: flex; justify-content: center; gap: 10px; margin: 15px 0; flex-wrap: wrap; }
+        .photo-container { display: flex; justify-content: center; gap: 10px; margin: 15px 0; }
         .photo-frame { background: white; padding: 5px 5px 15px 5px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); border: 1px solid #eee; transform: rotate(calc(var(--r) * 1deg)); }
-        .photo-frame img { width: 100px; height: 130px; object-fit: cover; display: block; }
+        .photo-frame img { width: 90px; height: 110px; object-fit: cover; display: block; }
 
+        .btn-claim {
+            display: inline-block; margin-top: 15px; padding: 12px 20px;
+            background-color: #ff4d6d; color: white; text-decoration: none;
+            border-radius: 25px; font-weight: bold; font-family: sans-serif;
+        }
     </style>
 </head>
 <body>
 
     <div id="page0" class="page active">
         <div class="welcome-text">
-            Kamu siap untuk kejutan nya<br>
+            Siap untuk kejutan nya<br>
             <span style="font-size: 1.3rem; color: #ff4d6d;">Raissya Maulidina</span><br>
             yang paling cantik? ✨
         </div>
@@ -185,14 +188,11 @@
     </div>
 
     <div id="page1" class="page">
-        <h2 style="color: var(--pink-dark); font-size: 1.2rem; margin-bottom: 10px;">Ambil Kejutanmu! ❤️</h2>
+        <h2 style="color: var(--pink-dark); font-size: 1.1rem; margin-bottom: 5px;">Tangkap Hati Merah! ❤️</h2>
         <div class="machine-frame">
             <div class="claw-system" id="claw-sys">
                 <div class="claw-cable" id="claw-cable"></div>
-                <div class="claw-head">
-                    <div class="claw-arm arm-left"></div>
-                    <div class="claw-arm arm-right"></div>
-                </div>
+                <div class="claw-head"><div class="claw-arm arm-left"></div><div class="claw-arm arm-right"></div></div>
             </div>
             <div class="prize-pool" id="pool"></div>
         </div>
@@ -209,40 +209,33 @@
         <div class="envelope-wrapper" id="envelope" onclick="openAnimation()">
             <div class="flap"></div>
             <div class="pocket">
-                <div style="position: absolute; bottom: 10px; left: 10px; font-size: 10px; color: #ad1457;">
-                    Dari: Arka<br>Untuk: Raissya M.
-                </div>
+                <div style="position: absolute; bottom: 10px; left: 10px; font-size: 10px; color: #ad1457;">Dari: Arka</div>
             </div>
             <div class="heart-seal">❤️</div>
             <div class="letter-preview">
                 <p>Ada surat untukmu...</p>
-                <p style="font-size: 12px; color: #888;">maaf yaa cuman ini ajaa</p>
+                <p style="font-size: 12px; color: #888;">(Tap untuk buka ✨)</p>
             </div>
         </div>
     </div>
 
     <div id="page3" class="page">
         <div class="final-scroll-page">
-            <h2 style="color: var(--pink-dark); font-size: 1.3rem;">Untuk Manusia Paling Cantik ❤️</h2>
-            
+            <h2 style="color: var(--pink-dark); font-size: 1.2rem;">Untuk Raissya ❤️</h2>
             <div class="photo-container">
-                <div class="photo-frame" style="--r: -3">
-                    <img src="URL_FOTO_1" alt="Foto 1">
-                </div>
-                <div class="photo-frame" style="--r: 3">
-                    <img src="URL_FOTO_2" alt="Foto 2">
-                </div>
+                <div class="photo-frame" style="--r: -3"><img src="https://ibb.co.com/tTzX5mNp" alt="Foto 1"></div>
+                <div class="photo-frame" style="--r: 3"><img src="https://ibb.co.com/VYffGBkD" alt="Foto 2"></div>
             </div>
             <div class="long-text">
                 <p>Halo <b>Raissya Maulidina</b>,</p>
                 <p>Selamat ya! Akhirnya kamu berhasil menangkap surat ini.</p>
-                <p>Terima kasih sudah menjadi alasan aku tersenyum setiap hari. Bersamamu, hal-hal yang biasa saja berubah jadi terasa luar biasa.</p>
-                <p>Aku sangat bersyukur punya kamu yang selalu sabar dan pengertian. Tetaplah jadi Raissya yang ceria.</p>
-                <p style="font-size: 18px; color: #ff4d6d; font-weight: bold; margin-top: 15px;">I Love You So Much! ❤️</p>
+                <p>Terima kasih sudah menjadi alasan aku tersenyum setiap hari. Bersamamu, semuanya jadi terasa luar biasa.</p>
+                <p>Tetaplah jadi Raissya yang ceria dan sabar ya.</p>
+                <p style="font-size: 18px; color: #ff4d6d; font-weight: bold;">I Love You! ❤️</p>
             </div>
-            <a href="https://www.tiktok.com/@ar_nexo" class="btn-claim" target="_blank">🎁 KLAIM HADIAHMU</a>
+            <a href="https://www.tiktok.com/@ar_nexo" class="btn-claim" target="_blank">🎁 KLAIM HADIAH</a>
             <br>
-            <button style="background:none; border:none; color:#bbb; margin-top:20px; cursor:pointer;" onclick="location.reload()">Main Lagi</button>
+            <button style="background:none; border:none; color:#bbb; margin-top:15px;" onclick="location.reload()">Main Lagi</button>
         </div>
     </div>
 
@@ -253,30 +246,22 @@
         function goToPage(num) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.getElementById('page' + num).classList.add('active');
-            
-            if(num === 1) {
-                initHearts();
-            }
-            if(num === 3) {
-                startHeartRain();
-            }
+            if(num === 1) initHearts();
+            if(num === 3) startHeartRain();
         }
 
         function initHearts() {
             const pool = document.getElementById('pool');
             pool.innerHTML = ''; 
-            for(let i=0; i<12; i++) {
+            for(let i=0; i<10; i++) {
                 const h = document.createElement('span');
                 h.className = 'heart';
                 if(i === 5) {
-                    h.innerHTML = '❤️';
-                    h.id = 'jackpot';
-                    h.style.left = '125px'; 
+                    h.innerHTML = '❤️'; h.id = 'jackpot'; h.style.left = '125px'; 
                 } else {
-                    h.innerHTML = '😩';
-                    h.style.left = Math.random() * 230 + 'px';
+                    h.innerHTML = '😩'; h.style.left = Math.random() * 230 + 'px';
                 }
-                h.style.bottom = Math.random() * 40 + 'px';
+                h.style.bottom = Math.random() * 30 + 'px';
                 pool.appendChild(h);
             }
         }
@@ -284,8 +269,7 @@
         function moveClaw(val) {
             if(isBusy) return;
             pos += val;
-            if(pos < 5) pos = 5; 
-            if(pos > 225) pos = 225;
+            if(pos < 5) pos = 5; if(pos > 225) pos = 225;
             document.getElementById('claw-sys').style.left = pos + 'px';
         }
 
@@ -294,48 +278,37 @@
             isBusy = true;
             const cable = document.getElementById('claw-cable');
             const target = document.getElementById('jackpot');
-            
-            cable.style.height = "240px";
+            cable.style.height = "210px";
             
             setTimeout(() => {
-                const clawCenter = pos + 25;
-                const targetCenter = target.offsetLeft + 15;
-                
-                if(Math.abs(clawCenter - targetCenter) < 30) {
+                const clawX = pos + 25;
+                const targetX = target.offsetLeft + 15;
+                if(Math.abs(clawX - targetX) < 30) {
                     target.style.zIndex = "11";
-                    target.style.bottom = "300px";
+                    target.style.bottom = "280px";
                     cable.style.height = "30px";
                     setTimeout(() => goToPage(2), 1000);
                 } else {
                     cable.style.height = "30px";
-                    setTimeout(() => {
-                        isBusy = false;
-                        alert("Yah, meleset! Coba lagi yaa ❤️");
-                    }, 800);
+                    setTimeout(() => { isBusy = false; alert("Meleset! Coba lagi ya ❤️"); }, 800);
                 }
             }, 800);
         }
 
         function openAnimation() {
-            const env = document.getElementById('envelope');
-            env.classList.add('opened');
-            setTimeout(() => {
-                goToPage(3);
-            }, 2500);
+            document.getElementById('envelope').classList.add('opened');
+            setTimeout(() => goToPage(3), 2500);
         }
 
         function startHeartRain() {
-            const symbols = ['❤️', '💖', '💕', '💗', '🌸'];
             setInterval(() => {
-                const heart = document.createElement('div');
-                heart.className = 'falling-heart';
-                heart.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
-                heart.style.left = Math.random() * 100 + 'vw';
-                heart.style.animationDuration = (Math.random() * 3 + 2) + 's'; 
-                heart.style.opacity = Math.random();
-                
-                document.body.appendChild(heart);
-                setTimeout(() => { heart.remove(); }, 5000);
+                const h = document.createElement('div');
+                h.className = 'falling-heart';
+                h.innerHTML = '❤️';
+                h.style.left = Math.random() * 100 + 'vw';
+                h.style.animationDuration = (Math.random() * 3 + 2) + 's'; 
+                document.body.appendChild(h);
+                setTimeout(() => h.remove(), 5000);
             }, 400);
         }
     </script>
