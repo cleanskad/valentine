@@ -223,8 +223,8 @@
         <div class="final-scroll-page">
             <h2 style="color: var(--pink-dark); font-size: 1.2rem;">Untuk Raissya ❤️</h2>
             <div class="photo-container">
-                <div class="photo-frame" style="--r: -3"><img src="https://ibb.co.com/tTzX5mNp" alt="Foto 1"></div>
-                <div class="photo-frame" style="--r: 3"><img src="https://ibb.co.com/VYffGBkD" alt="Foto 2"></div>
+                <div class="photo-frame" style="--r: -3"><img src="<a href="https://ibb.co.com/VYffGBkD"><img src="https://i.ibb.co.com/TM99GhNR/cantik2.jpg" alt="cantik2" border="0"></a>" alt="Foto 1"></div>
+                <div class="photo-frame" style="--r: 3"<a href="https://ibb.co.com/tTzX5mNp"><img src="https://i.ibb.co.com/fz9v71Kd/cantik.jpg" alt="cantik" border="0"></a>"Foto 2"></div>
             </div>
             <div class="long-text">
                 <p>Halo <b>Raissya Maulidina</b>,</p>
