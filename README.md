@@ -1,8 +1,9 @@
+<!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Untuk Raissya Maulidina</title>
+    <title>Special for Raissya Maulidina</title>
     <style>
         :root {
             --pink-light: #fce4ec;
@@ -226,10 +227,10 @@
             
             <div class="photo-container">
                 <div class="photo-frame" style="--r: -3">
-                    <img src="https://via.placeholder.com/100x130?text=Foto+1" alt="Foto 1">
+                    <img src="URL_FOTO_1" alt="Foto 1">
                 </div>
                 <div class="photo-frame" style="--r: 3">
-                    <img src="https://via.placeholder.com/100x130?text=Foto+2" alt="Foto 2">
+                    <img src="URL_FOTO_2" alt="Foto 2">
                 </div>
             </div>
             <div class="long-text">
@@ -267,11 +268,10 @@
             for(let i=0; i<12; i++) {
                 const h = document.createElement('span');
                 h.className = 'heart';
-                // Hati ke-5 kita jadikan target (Jackpot)
                 if(i === 5) {
                     h.innerHTML = '❤️';
                     h.id = 'jackpot';
-                    h.style.left = '125px'; // Posisi di tengah agar mudah ditangkap
+                    h.style.left = '125px'; 
                 } else {
                     h.innerHTML = '😩';
                     h.style.left = Math.random() * 230 + 'px';
@@ -295,22 +295,18 @@
             const cable = document.getElementById('claw-cable');
             const target = document.getElementById('jackpot');
             
-            // Animasi Turun
             cable.style.height = "240px";
             
             setTimeout(() => {
                 const clawCenter = pos + 25;
                 const targetCenter = target.offsetLeft + 15;
                 
-                // Cek jika capit kena hati merah
                 if(Math.abs(clawCenter - targetCenter) < 30) {
                     target.style.zIndex = "11";
-                    // Hati ikut naik
                     target.style.bottom = "300px";
                     cable.style.height = "30px";
                     setTimeout(() => goToPage(2), 1000);
                 } else {
-                    // Gagal
                     cable.style.height = "30px";
                     setTimeout(() => {
                         isBusy = false;
